@@ -18,3 +18,18 @@
     <p>AI in healthcare not only enhances efficiency but also improves patient care and decision-making for healthcare professionals.</p>
 </body>
 </html>
+
+from flask import Flask
+from pyngrok import ngrok
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "<h1>Safe Test Page: AI in Healthcare</h1><p>This is a test page for summarization.</p>"
+
+# Start a public tunnel safely
+public_url = ngrok.connect(5000)
+print("Your safe test page is live at:", public_url)
+
+app.run(port=5000)
